@@ -1,7 +1,10 @@
 package com.example.samuraitravel.controller;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> cb7d1f55843e1234957b128a8e6901fc5dc3eaaa
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;

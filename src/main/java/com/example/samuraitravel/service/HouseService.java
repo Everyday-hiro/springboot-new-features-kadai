@@ -90,5 +90,8 @@ public class HouseService {
 		   e.printStackTrace();
 	   }
    }
+<<<<<<< HEAD
 
+=======
+>>>>>>> cb7d1f55843e1234957b128a8e6901fc5dc3eaaa
 }
