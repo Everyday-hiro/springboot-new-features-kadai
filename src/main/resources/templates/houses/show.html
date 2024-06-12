@@ -143,7 +143,6 @@
 												</form>
 											</div>
 										</div>
-<<<<<<< HEAD
 									 </div>  
 									 
 									 <div class="container px-0">
@@ -155,39 +154,23 @@
 													   <a class="btn text-white shadow-sm samuraitravel-btn" th:href="@{/houses/__${house.getId()}__/review/reviewregister}">
 														 レビューを投稿する
 													   </a>
+													</div>
+													<div class="mb-4 text-center" th:if="${totalReviewCount < 1}">
+														まだレビューがありません
 													</div>  
 												</div>
-												
-											    <div th:if="${reviewPage != null}">
-												 <div class="mb-3" th:each="review : ${review}">
-													<div class="card h-100">
-														<div class="row g-0">
-															<div class="col-md-8">
-																<div class="card-body">
-																	<h3 class="card-title mb-3" th:text="${review.getId()}"></h3>
-																	
-																	<div class="review-edit" sec:authorize="hasRole('ROLE_GENERAL')">
-																	    <div class="d-flex justify-content-end align-items-end mb-3">
-																	        <table class="table">
-																		        <thead>
-																			        <tr>
-																				        <th scope="col">名前</th>
-																				        <th scope="col">更新日</th>
-																				        <th scope="col">評価</th>
-																				        <th scope="col">コメント</th>
-																				        <th scope="col"></th>
-																				        <th scope="col"></th>
-																			        </tr>
-																		        </thead>
-																		        <tbody>
-																			        <tr>
-																				        <td th:text="${review.getName()}"></td>
-																				        <td th:text="${review.getWriting()}"></td>
-																				        <td th:text="${review.getStar()}"></td>
-																				        <td th:text="${review.getExplanation()}"></td>
-																				        <td th:href="@{/templates/review/edit}">編集</td>
+												<table class="table">
+																		      
+																			        <tr th:each="review : ${reviews}">
+																				        <td th:text="${reviews.getName()}"></td>
+																				        <td th:text="${reviews.getWriting()}"></td>
+																				        <td th:text="${reviews.getStar()}"></td>
+																				        <td th:text="${reviews.getExplanation()}"></td>
+																				        <td><a th:href="@{/templates/review/edit}">編集</a></td>
 																				        <td><a href="#" class="samuraitravel-link-danger" data-bs-toggle="modal" th:data-bs-target="${'#deleteReviewModal' + review.getId()}">削除</a></td>
-																			
+																			        </tr>
+												</table>
+																		       
 																				       <!-- 削除用モーダル -->
 																				        <div class="modal fade" th:id="${'deleteReviewModal' + review.getId()}" tabindex="-1" th:aria-labelledby="${'deleteReviewModalLabel' + review.getId()}">
 																					        <div class="modal-dialog">
@@ -204,17 +187,6 @@
 																						         </div>
 																					         </div>
 																				        </div>
-																			         </tr>
-																		         </tbody>
-																	         </table>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												   </div>
-												</div>
 												
 												<div class="mb-4 text-center" th:if="${totalReviewConut > 6}">
 													<a th:href="@{/templates/review/review}">全てのレビューを見る</a>
@@ -222,9 +194,6 @@
 											</div>
 										</div>
 									 </div>                                                                            
-=======
-									 </div>                                                                                                                     
->>>>>>> cb7d1f55843e1234957b128a8e6901fc5dc3eaaa
                                  </div>                                                                                             
                              </div>
                          </div>
