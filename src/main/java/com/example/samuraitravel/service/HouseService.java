@@ -90,5 +90,4 @@ public class HouseService {
 		   e.printStackTrace();
 	   }
    }
-
 }
