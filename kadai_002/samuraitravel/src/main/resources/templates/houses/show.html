@@ -149,9 +149,9 @@
 										<div class="review">
 											<div class="review-body">
 												<h1 class="mb-4 text-center">レビュー</h1>
-												<div class="review-create" sec:authorize="hasRole('ROLE_GENERAL')">
+												<div class="review-create" sec:authorize="isAuthenticated()" th:if="${!userHasReviews}" >
 													<div class="form-group d-flex justify-content-center my-4">
-													   <a class="btn text-white shadow-sm samuraitravel-btn" th:href="@{/review/registerform/{id}(id = ${house.id})}">
+													   <a class="btn text-white shadow-sm samuraitravel-btn" th:href="@{/review/registerform/{id}(id = ${house.id})}" th:if="${!hasUserAlreadyReviewed}">
 														 レビューを投稿する
 													   </a>
 													</div>
