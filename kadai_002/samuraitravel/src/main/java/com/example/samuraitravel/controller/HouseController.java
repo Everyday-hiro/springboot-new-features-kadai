@@ -87,14 +87,20 @@ public class HouseController {
 		House house = houseRepository.getReferenceById(id);
 		Page<Review> reviewPage = reviewRepository.findByHouseId(id, pageable);
 		
-		Integer user = userDetailsImpl.getUser().getId();
-		List<Review> userHasReviews = reviewRepository.findByUserIdAndHouseId(user, id);
+		if(userDetailsImpl != null) {
+		    Integer user = userDetailsImpl.getUser().getId();
+		    List<Review> userHasReviews = reviewRepository.findByUserIdAndHouseId(user, id);
+		    model.addAttribute("userHasReviews", !userHasReviews.isEmpty());
+		} else {
+		    List<Review> userHasReviews = reviewRepository.findByHouseId(id);
+			model.addAttribute("userHasReviews", userHasReviews.isEmpty());		
+		}
+		    model.addAttribute("house", house);
+		    model.addAttribute("reservationInputForm", new ReservationInputForm());
 		
-		model.addAttribute("house", house);
-		model.addAttribute("reservationInputForm", new ReservationInputForm());
+		    model.addAttribute("reviewPage", reviewPage);
 		
-		model.addAttribute("reviewPage", reviewPage);
-		model.addAttribute("userHasReviews", !userHasReviews.isEmpty());
+		
 		
 		return "houses/show";
 	}

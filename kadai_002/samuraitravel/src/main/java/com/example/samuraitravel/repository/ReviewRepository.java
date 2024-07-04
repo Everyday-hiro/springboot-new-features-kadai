@@ -14,6 +14,7 @@ public interface ReviewRepository extends JpaRepository<Review, Integer>{
 	Page<Review> findByHouseId(Integer houseId, Pageable pageable);
 
 	 List<Review> findByUserIdAndHouseId(Integer userId, Integer houseId);
-	
+
+	List<Review> findByHouseId(Integer id);
 
 }
