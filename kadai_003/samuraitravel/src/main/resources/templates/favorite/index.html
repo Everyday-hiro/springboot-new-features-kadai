@@ -27,26 +27,35 @@
 					</div>
 				</div>
 				
-				<div class="row row-cols-lg-5 row-cols-2 g-3 mb-5">
-					<div class="col" th:each="favoritePage : ${favoritePage}">
-						<a th:href="@{/houses/__${favoritePage.house.getId()}__}" class="link-dark samuraitravel-card-link">
-							<div class="card h-100">
-								<img th:if="${favoritePage.house.getImageName()}" th:src="@{/storage/__${favoritePage.house.getImageName()}__}" class="card-img-top samuraitravel-vertical-card-image" alt="店舗画像">
-								<img th:unless="${favoritePage.house.getImageName()}" th:src="@{/images/noImage.png}" class="card-img-top samuraitravel-vertical-card-image" alt="NO IMAGE">
-								<div class="card-body">
-									<h3 class="card-title" th:text="${favoritePage.house.getName()}"></h3>
-									<p class="card-text mb-1">
-										<small class="text-muted" th:text="${favoritePage.house.getDescription()}"></small>
-										<small class="text-muted" th:text="${favoritePage.house.getPostalCode()}"></small>
-										<small class="text-muted" th:text="${favoritePage.house.getAddress()}"></small>
-									</p>
-									<p class="card-text">
-										<span th:text="${#numbers.formatInteger(favoritePage.house.getPrice(), 1, 'COMMA') + '円/泊'}"></span>
-									</p>
-								</div>
-							</div>
-						</a>
-					</div>
+				<h1 class="mb-4 text-center">お気に入り一覧</h1>
+				<div class="mb-3" th:each="favoritePage : ${favoritePage}">
+					<a th:href="@{/houses/__${favoritePage.house.getId()}__}" class="link-dark samuraitravel-card-link-favorite">
+						<div class="card h-100">
+							<div class="row g-0">
+								<div class="col-md-4">
+							        <img th:if="${favoritePage.house.getImageName()}" th:src="@{/storage/__${favoritePage.house.getImageName()}__}" class="card-img-top samuraitravel-vertical-card-image" alt="店舗画像">
+							        <img th:unless="${favoritePage.house.getImageName()}" th:src="@{/images/noImage.png}" class="card-img-top samuraitravel-vertical-card-image" alt="NO IMAGE">
+							    </div>
+							    <div class="col-md-8">
+									<div class="card-body">
+								        <h3 class="card-title mb-3" th:text="${favoritePage.house.getName()}"></h3>
+										
+										<hr class="mb-3">
+										
+								        <p class="card-text mb-1">
+									        <small class="text-muted" th:text="${favoritePage.house.getDescription()}"></small>
+									        <small class="text-muted" th:text="${favoritePage.house.getPostalCode()}"></small>
+									        <small class="text-muted" th:text="${favoritePage.house.getAddress()}"></small>
+								        </p>
+										
+								        <p class="card-text">
+									        <span th:text="${#numbers.formatInteger(favoritePage.house.getPrice(), 1, 'COMMA') + '円/泊'}"></span>
+								        </p>
+									</div>	
+							    </div>
+						    </div>
+						</div>	
+					</a>
 				</div>
 				
 				<!--ページネーション-->
